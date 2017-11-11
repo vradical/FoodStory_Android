@@ -2,18 +2,12 @@ package com.ronteo.foodstory;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -23,7 +17,6 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -41,6 +34,7 @@ public class LoginActivity extends Activity {
     private CallbackManager callbackManager;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
+    private MaterialDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +42,11 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         loginButton = findViewById(R.id.login_button);
+        mDialog = new MaterialDialog.Builder(this)
+                .content("Loading...")
+                .progress(true, 0)
+                .cancelable(false)
+                .build();
 
         loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
 
@@ -76,6 +75,7 @@ public class LoginActivity extends Activity {
                                     editor.putString("user_name", object.getString("name"));
                                     editor.apply();
                                     editor.commit();
+                                    mDialog.show();
                                     loginUser();
                                 } catch (JSONException e) {
                                     displayDialog("Failed to connect to Facebook");
@@ -152,6 +152,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onFinish() {
+                mDialog.dismiss();
                 finish();
             }
 
