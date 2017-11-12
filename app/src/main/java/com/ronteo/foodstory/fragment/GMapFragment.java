@@ -81,11 +81,9 @@ public class GMapFragment extends Fragment {
                     mMap.setMyLocationEnabled(true);
                 }
 
-                // For dropping a marker at a point on the Map
                 LatLng singapore = new LatLng(1.301, 103.837);
-
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(singapore).zoom(12).build();
-                gMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                //gMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 
         });

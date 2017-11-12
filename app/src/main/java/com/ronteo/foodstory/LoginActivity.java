@@ -19,6 +19,7 @@ import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.ronteo.foodstory.util.RestClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -129,8 +130,7 @@ public class LoginActivity extends Activity {
     //SEND QUERY TO ATHENA WEB SERVICE
     public void invokeWS(RequestParams params) {
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(Constants.WEB_SERVICE+"user/login", params, new JsonHttpResponseHandler() {
+        RestClient.get(Constants.WEB_SERVICE+"user/login", params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

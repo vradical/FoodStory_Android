@@ -26,20 +26,17 @@ import com.facebook.login.LoginManager;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.ronteo.foodstory.fragment.GMapFragment;
+import com.ronteo.foodstory.fragment.HawkerFragment;
+import com.ronteo.foodstory.fragment.ProfileFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 public class MainActivity extends AppCompatActivity{
 
-    private AccessTokenTracker accessTokenTracker;
     public static SharedPreferences preferences;
-    public static SharedPreferences.Editor editor;
-
-    protected Button mLogout;
 
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
-    protected GoogleMap mGoogleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,58 +58,25 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 switch (tabId) {
-                    /*
+
                     case R.id.tab_home:
-                        Fragment mapFragment = new GMapFragment();
-                        changeFragment(mapFragment, R.color.colorPrimary);
+                        Fragment hawkerFragment = new HawkerFragment();
+                        changeFragment(hawkerFragment, R.color.colorPrimary);
                         break;
-                    */
+
                     case R.id.tab_discover:
                         Fragment mapFragment = new GMapFragment();
                         changeFragment(mapFragment, R.color.colorPrimary);
                         break;
-                        /*
+
                     case R.id.tab_profile:
-                        Fragment chatFragment = new ChatFragment();
-                        changeFragment(chatFragment, R.color.colorPrimary);
+                        Fragment profileFragment = new ProfileFragment();
+                        changeFragment(profileFragment, R.color.colorPrimary);
                         break;
-                        */
                 }
             }
         });
 
-        //Temp Placeholder for logout
-        mLogout = findViewById(R.id.setting_logout);
-
-        mLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AlertDialog.Builder builder;
-                builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Logout from FoodStory?")
-                        .setTitle("Logout");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        LoginManager.getInstance().logOut();
-                        Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(i);
-                        overridePendingTransition(0, 0);
-                        finish();
-                        dialog.dismiss();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                builder.create().show();
-            }
-        });
     }
 
     //Change fragment
