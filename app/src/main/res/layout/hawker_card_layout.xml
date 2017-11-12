@@ -36,23 +36,12 @@
                     android:src="@drawable/dummy"/>
 
                 <ImageView
-                    android:id="@+id/hawker_card_isdelivery"
+                    android:id="@+id/hawker_card_status"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/delivery"
-                    android:visibility="invisible"/>
-
-                <ImageView
-                    android:id="@+id/hawker_card_isstore"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/store"
-                    android:layout_marginLeft="70dp"
-                    android:visibility="invisible"/>
+                    android:src="@drawable/delivery"/>
 
             </FrameLayout>
 

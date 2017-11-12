@@ -30,8 +30,7 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         TextView hawkerNameView;
         TextView hawkerDescView;
         ImageView hawkerImageView;
-        ImageView hawkerStore;
-        ImageView hawkerDelivery;
+        ImageView hawkerStatus;
         LinearLayout hawkerWrapper;
 
         public MyViewHolder(View itemView) {
@@ -40,8 +39,7 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
             this.hawkerDescView = itemView.findViewById(R.id.hawker_card_desc);
             this.hawkerImageView = itemView.findViewById(R.id.hawker_card_cover);
             this.hawkerWrapper = itemView.findViewById(R.id.hawker_card_wrapper);
-            this.hawkerStore = itemView.findViewById(R.id.hawker_card_isstore);
-            this.hawkerDelivery = itemView.findViewById(R.id.hawker_card_isdelivery);
+            this.hawkerStatus = itemView.findViewById(R.id.hawker_card_status);
         }
     }
 
@@ -65,23 +63,18 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         TextView textViewName = holder.hawkerNameView;
         TextView textViewVersion = holder.hawkerDescView;
         ImageView imageView = holder.hawkerImageView;
-        ImageView storeView = holder.hawkerStore;
-        ImageView deliveryView = holder.hawkerDelivery;
+        ImageView statusView = holder.hawkerStatus;
 
         textViewName.setText(dataSet.get(listPosition).getName());
         textViewVersion.setText(dataSet.get(listPosition).getDescription());
         new DownloadImage(imageView).execute(dataSet.get(listPosition).getCoverPhoto());
 
         if(dataSet.get(listPosition).isDelivery() && dataSet.get(listPosition).isStore()){
-            storeView.setVisibility(View.VISIBLE);
-            deliveryView.setVisibility(View.VISIBLE);
+            statusView.setImageResource(R.drawable.both);
         }else if (dataSet.get(listPosition).isStore()){
-            storeView.setVisibility(View.VISIBLE);
-            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)storeView.getLayoutParams();
-            params.setMargins(10, 10, 10, 10);
-            storeView.setLayoutParams(params);
+            statusView.setImageResource(R.drawable.store);
         }else if (dataSet.get(listPosition).isDelivery()){
-            deliveryView.setVisibility(View.VISIBLE);
+            statusView.setImageResource(R.drawable.delivery);
         }
 
         holder.hawkerWrapper.setOnClickListener(new View.OnClickListener() {
