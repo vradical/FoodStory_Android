@@ -47,6 +47,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.ronteo.foodstory.HawkerActivity"
+            android:parentActivityName="com.ronteo.foodstory.MainActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ronteo.foodstory.MainActivity" />
+        </activity>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -63,7 +72,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".HawkerActivity"></activity>
     </application>
 
 </manifest>

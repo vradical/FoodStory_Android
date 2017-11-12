@@ -1,10 +1,12 @@
 package com.ronteo.foodstory.model;
 
+import java.io.Serializable;
+
 /**
  * Created by ronteo on 12/11/17.
  */
 
-public class Dish {
+public class Dish implements Serializable {
 
     private long id;
     private String name;

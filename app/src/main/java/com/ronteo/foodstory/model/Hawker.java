@@ -1,12 +1,13 @@
 package com.ronteo.foodstory.model;
 
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by ronteo on 12/11/17.
  */
-public class Hawker {
+public class Hawker implements Serializable {
 
     private long id;
     private String name;

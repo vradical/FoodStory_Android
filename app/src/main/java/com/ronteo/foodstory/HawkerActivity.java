@@ -1,11 +1,17 @@
 package com.ronteo.foodstory;
 
+import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.support.annotation.IdRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +23,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.ronteo.foodstory.adapter.HawkerAdapter;
 import com.ronteo.foodstory.fragment.GMapFragment;
+import com.ronteo.foodstory.fragment.HawkerAboutFragment;
 import com.ronteo.foodstory.fragment.HawkerFragment;
 import com.ronteo.foodstory.fragment.ProfileFragment;
 import com.ronteo.foodstory.model.Hawker;
@@ -37,10 +44,15 @@ public class HawkerActivity extends AppCompatActivity {
 
     private String hawkerID;
     private MaterialDialog mDialog;
-    private Hawker hawker;
+    public Hawker hawker;
 
     private TextView hawkerProfileName;
     private ImageView hawkerCoverImage;
+
+    private FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
+
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,10 @@ public class HawkerActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         hawkerID = b.getString("hawkerID");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        fragmentManager = getFragmentManager();
 
         mDialog = new MaterialDialog.Builder(this)
                 .content(R.string.dialog_loading)
@@ -76,8 +92,6 @@ public class HawkerActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Log.e("Testing", hawker.toString());
-
                 setContentView(R.layout.activity_hawker);
 
                 hawkerProfileName = findViewById(R.id.hawker_profile_name);
@@ -85,6 +99,9 @@ public class HawkerActivity extends AppCompatActivity {
 
                 new DownloadImage(hawkerCoverImage).execute(hawker.getCoverPhoto());
                 hawkerProfileName.setText(hawker.getName());
+
+                bundle = new Bundle();
+                bundle.putSerializable("Hawker", hawker);
 
                 //Navigation Bar
                 BottomBar bottomBar = findViewById(R.id.hawker_mid_bar);
@@ -94,6 +111,8 @@ public class HawkerActivity extends AppCompatActivity {
                         switch (tabId) {
 
                             case R.id.hawker_about:
+                                Fragment hawkerFragment = new HawkerAboutFragment();
+                                changeFragment(hawkerFragment);
                                 break;
 
                             case R.id.hawker_signature:
@@ -117,5 +136,13 @@ public class HawkerActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    //Change fragment
+    public void changeFragment(Fragment changeFragment){
+        changeFragment.setArguments(bundle);
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.hawker_fraglayout, changeFragment);
+        fragmentTransaction.commit();
     }
 }

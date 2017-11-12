@@ -49,17 +49,17 @@ public class MainActivity extends AppCompatActivity{
 
                     case R.id.tab_home:
                         Fragment hawkerFragment = new HawkerFragment();
-                        changeFragment(hawkerFragment, R.color.colorPrimary);
+                        changeFragment(hawkerFragment);
                         break;
 
                     case R.id.tab_discover:
                         Fragment mapFragment = new GMapFragment();
-                        changeFragment(mapFragment, R.color.colorPrimary);
+                        changeFragment(mapFragment);
                         break;
 
                     case R.id.tab_profile:
                         Fragment profileFragment = new ProfileFragment();
-                        changeFragment(profileFragment, R.color.colorPrimary);
+                        changeFragment(profileFragment);
                         break;
                 }
             }
@@ -68,13 +68,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Change fragment
-    public void changeFragment(Fragment changeFragment, int color){
+    public void changeFragment(Fragment changeFragment){
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, changeFragment);
         fragmentTransaction.commit();
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, color));
     }
 
     //Check for facebook login

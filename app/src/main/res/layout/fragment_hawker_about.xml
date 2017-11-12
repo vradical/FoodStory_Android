@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.ronteo.foodstory.fragment.HawkerAboutFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/hawker_about1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@+id/hawker_about2"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="About Us"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Title"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="2dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/hawker_about_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="The full about"
+            style="@style/Base.TextAppearance.AppCompat"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hawker_about2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Our Story"
+            style="@style/Base.TextAppearance.AppCompat.Title"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="2dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/hawker_story_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="The Story"
+            style="@style/Base.TextAppearance.AppCompat"/>
+
+    </LinearLayout>
+
+</LinearLayout>
