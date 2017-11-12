@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -105,27 +106,54 @@ public class HawkerActivity extends AppCompatActivity {
                 bundle.putSerializable("Hawker", hawker);
 
                 //Navigation Bar
-                BottomBar bottomBar = findViewById(R.id.hawker_mid_bar);
-                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-                    @Override
-                    public void onTabSelected(@IdRes int tabId) {
-                        switch (tabId) {
+                if(hawker.isDelivery()) {
 
-                            case R.id.hawker_about:
-                                Fragment hawkerFragment = new HawkerAboutFragment();
-                                changeFragment(hawkerFragment);
-                                break;
+                    BottomBar bottomBar = findViewById(R.id.hawker_mid_bar);
+                    bottomBar.setVisibility(View.VISIBLE);
+                    bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                        @Override
+                        public void onTabSelected(@IdRes int tabId) {
+                            switch (tabId) {
 
-                            case R.id.hawker_signature:
-                                Fragment signatureFragment = new SignatureFragment();
-                                changeFragment(signatureFragment);
-                                break;
+                                case R.id.hawker_about:
+                                    Fragment hawkerFragment = new HawkerAboutFragment();
+                                    changeFragment(hawkerFragment);
+                                    break;
 
-                            case R.id.hawker_dishes:
-                                break;
+                                case R.id.hawker_signature:
+                                    Fragment signatureFragment = new SignatureFragment();
+                                    changeFragment(signatureFragment);
+                                    break;
+
+                                case R.id.hawker_dishes:
+                                    break;
+                            }
                         }
-                    }
-                });
+                    });
+
+                }else{
+
+                    BottomBar bottomBar = findViewById(R.id.hawker_mid_bar2);
+                    bottomBar.setVisibility(View.VISIBLE);
+                    bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                        @Override
+                        public void onTabSelected(@IdRes int tabId) {
+                            switch (tabId) {
+
+                                case R.id.hawker_about:
+                                    Fragment hawkerFragment = new HawkerAboutFragment();
+                                    changeFragment(hawkerFragment);
+                                    break;
+
+                                case R.id.hawker_signature:
+                                    Fragment signatureFragment = new SignatureFragment();
+                                    changeFragment(signatureFragment);
+                                    break;
+
+                            }
+                        }
+                    });
+                }
 
                 mDialog.dismiss();
             }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/hawker_about"
+        icon="@drawable/ic_person"
+        title="About" />
+    <tab
+        id="@+id/hawker_signature"
+        icon="@drawable/ic_star"
+        title="Signature" />
+</tabs>

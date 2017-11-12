@@ -38,19 +38,34 @@
 
         </RelativeLayout>
 
-        <com.roughike.bottombar.BottomBar
-            android:id="@+id/hawker_mid_bar"
+        <LinearLayout
+            android:id="@+id/hawker_bar_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@+id/hawker_profile_cover"
-            app:bb_tabXmlResource="@xml/hawker_tabs" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hawker_profile_cover">
 
+            <com.roughike.bottombar.BottomBar
+                android:id="@+id/hawker_mid_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:bb_tabXmlResource="@xml/hawker_tabs"
+                android:visibility="gone"/>
+
+            <com.roughike.bottombar.BottomBar
+                android:id="@+id/hawker_mid_bar2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:bb_tabXmlResource="@xml/hawker_tabs2"
+                android:visibility="gone"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/hawker_fraglayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/hawker_mid_bar"
+            android:layout_below="@+id/hawker_bar_wrapper"
+
             android:layout_marginTop="5dp"
             android:orientation="vertical">
         </LinearLayout>
