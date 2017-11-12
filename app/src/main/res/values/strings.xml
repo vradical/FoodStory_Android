@@ -2,25 +2,17 @@
     <string name="app_name">FoodStory</string>
 
     <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Discover</string>
     <string name="title_profile">Profile</string>
+
+    <!-- dialog strings -->
+    <string name="dialog_loading">Loading...</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_error_server">Problem connecting to server. Please try again later</string>
+    <string name="dialog_error_facebook">Problem connecting to Facebook</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

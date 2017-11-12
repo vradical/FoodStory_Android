@@ -2,6 +2,7 @@ package com.ronteo.foodstory.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,8 +40,6 @@ public class HawkerFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<Hawker> hawkerList;
-    static View.OnClickListener myOnClickListener;
-
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -55,9 +54,6 @@ public class HawkerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_hawker, container, false);
 
-
-        myOnClickListener = new MyOnClickListener(getActivity().getApplicationContext());
-
         recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
@@ -68,22 +64,6 @@ public class HawkerFragment extends Fragment {
         invokeWS();
 
         return view;
-    }
-
-
-    private static class MyOnClickListener implements View.OnClickListener {
-
-        private final Context context;
-
-        private MyOnClickListener(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public void onClick(View v) {
-            //go new activity
-        }
-
     }
 
     public void invokeWS() {

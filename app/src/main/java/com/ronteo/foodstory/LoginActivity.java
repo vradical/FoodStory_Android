@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.CallbackManager;
@@ -44,7 +45,7 @@ public class LoginActivity extends Activity {
 
         loginButton = findViewById(R.id.login_button);
         mDialog = new MaterialDialog.Builder(this)
-                .content("Loading...")
+                .content(R.string.dialog_loading)
                 .progress(true, 0)
                 .cancelable(false)
                 .build();
@@ -79,7 +80,7 @@ public class LoginActivity extends Activity {
                                     mDialog.show();
                                     loginUser();
                                 } catch (JSONException e) {
-                                    displayDialog("Failed to connect to Facebook");
+                                    displayDialog(R.string.dialog_error_facebook);
                                 }
                             }
                         });
@@ -130,10 +131,12 @@ public class LoginActivity extends Activity {
     //SEND QUERY TO ATHENA WEB SERVICE
     public void invokeWS(RequestParams params) {
 
-        RestClient.get(Constants.WEB_SERVICE+"user/login", params, new JsonHttpResponseHandler() {
+        RestClient.get("user/login", params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                /*
                 try {
 
                     if (response.getBoolean("newUser")) {
@@ -143,28 +146,33 @@ public class LoginActivity extends Activity {
                 } catch (JSONException e) {
                     displayDialog("Error retrieving information from server");
                     e.printStackTrace();
-                }
-            }
+                }*/
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-            }
-
-            @Override
-            public void onFinish() {
                 mDialog.dismiss();
                 finish();
             }
 
             @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+
+            }
+
+            @Override
+            public void onFinish() {
+            }
+
+            @Override
             public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+                mDialog.dismiss();
+                Log.e("error", t.toString());
+                displayDialog(R.string.dialog_error_server);
                 LoginManager.getInstance().logOut();
             }
 
         });
     }
 
-    public void displayDialog(String message) {
+    public void displayDialog(int message) {
 
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(LoginActivity.this);

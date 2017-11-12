@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/hawker_about"
+        icon="@drawable/ic_home_black_24dp"
+        title="About" />
+    <tab
+        id="@+id/hawker_signature"
+        icon="@drawable/ic_map"
+        title="Signature" />
+    <tab
+        id="@+id/hawker_dishes"
+        icon="@drawable/ic_person"
+        title="Dishes" />
+</tabs>

@@ -1,12 +1,15 @@
 package com.ronteo.foodstory.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ronteo.foodstory.HawkerActivity;
 import com.ronteo.foodstory.R;
 import com.ronteo.foodstory.model.Hawker;
 import com.ronteo.foodstory.util.DownloadImage;
@@ -26,12 +29,14 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         TextView hawkerNameView;
         TextView hawkerDescView;
         ImageView hawkerImageView;
+        LinearLayout hawkerWrapper;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.hawkerNameView = (TextView) itemView.findViewById(R.id.hawkerNameView);
-            this.hawkerDescView = (TextView) itemView.findViewById(R.id.hawkerDescView);
-            this.hawkerImageView = (ImageView) itemView.findViewById(R.id.hawkerImageView);
+            this.hawkerNameView = itemView.findViewById(R.id.hawker_card_name);
+            this.hawkerDescView = itemView.findViewById(R.id.hawker_card_desc);
+            this.hawkerImageView = itemView.findViewById(R.id.hawker_card_cover);
+            this.hawkerWrapper = itemView.findViewById(R.id.hawker_card_wrapper);
         }
     }
 
@@ -44,8 +49,6 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.hawker_card_layout, parent, false);
-
-        //view.setOnClickListener(HawkerFragment.);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
@@ -61,6 +64,15 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         textViewName.setText(dataSet.get(listPosition).getName());
         textViewVersion.setText(dataSet.get(listPosition).getDescription());
         new DownloadImage(imageView).execute(dataSet.get(listPosition).getCoverPhoto());
+
+        holder.hawkerWrapper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), HawkerActivity.class);
+                i.putExtra("hawkerID", String.valueOf(dataSet.get(holder.getLayoutPosition()).getId()));
+                view.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override

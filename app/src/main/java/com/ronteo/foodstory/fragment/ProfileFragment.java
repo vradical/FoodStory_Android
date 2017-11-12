@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.facebook.login.LoginManager;
 import com.ronteo.foodstory.LoginActivity;
+import com.ronteo.foodstory.MainActivity;
 import com.ronteo.foodstory.R;
 
 /**
@@ -42,18 +43,17 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder;
-                builder = new AlertDialog.Builder(getActivity().getApplicationContext());
+                builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("Logout from FoodStory?")
                         .setTitle("Logout");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         LoginManager.getInstance().logOut();
-                        Intent i = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+                        Intent i = new Intent(getActivity(), LoginActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(i);
                         getActivity().overridePendingTransition(0, 0);
-                        getActivity().finish();
                         dialog.dismiss();
                     }
                 });

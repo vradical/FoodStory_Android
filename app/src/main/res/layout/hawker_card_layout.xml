@@ -18,17 +18,19 @@
         android:layout_margin="5dp">
 
         <LinearLayout
+            android:id="@+id/hawker_card_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
             <ImageView
-                android:id="@+id/hawkerImageView"
+                android:id="@+id/hawker_card_cover"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_home_black_24dp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,7 +39,7 @@
                 android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/hawkerNameView"
+                    android:id="@+id/hawker_card_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -45,11 +47,13 @@
                     android:textColor="#000"
                     android:textSize="18sp" />
                 <TextView
-                    android:id="@+id/hawkerDescView"
+                    android:id="@+id/hawker_card_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Description"
-                    android:textColor="#555" />
+                    android:textColor="#555"
+                    android:ellipsize="end"
+                    android:maxLines="3"/>
             </LinearLayout>
 
         </LinearLayout>

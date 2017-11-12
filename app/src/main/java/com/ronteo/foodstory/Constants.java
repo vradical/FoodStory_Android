@@ -8,6 +8,6 @@ public final class Constants {
 
     //Webservice
 
-    public static String WEB_SERVICE = "https://ca6133fc.ngrok.io/api/";
+    public static String WEB_SERVICE = "https://29b8313a.ngrok.io/api/";
 
 }
