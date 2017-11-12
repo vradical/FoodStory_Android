@@ -18,6 +18,7 @@ public class Hawker implements Serializable {
     private String website;
     private String description;
     private String coverPhoto;
+    private String story;
     private boolean store;
     private boolean delivery;
 
@@ -28,7 +29,7 @@ public class Hawker implements Serializable {
     }
 
     public Hawker(String name, String email, String phone, double addLat, double addLong, String website,
-                  String description, String coverPhoto, boolean store, boolean delivery) {
+                  String description, String coverPhoto, boolean store, boolean delivery, String story) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -39,6 +40,7 @@ public class Hawker implements Serializable {
         this.coverPhoto = coverPhoto;
         this.store = store;
         this.delivery = delivery;
+        this.story = story;
     }
 
     public long getId() {
@@ -137,4 +139,11 @@ public class Hawker implements Serializable {
         this.dishList = dishList;
     }
 
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
+    }
 }

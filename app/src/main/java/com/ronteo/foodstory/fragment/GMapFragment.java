@@ -76,14 +76,14 @@ public class GMapFragment extends Fragment {
                     ActivityCompat.requestPermissions(getActivity(), permissions, REQUEST_ACCESS_FINE_LOCATION);
                 }
 
-                if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(), permissions, REQUEST_ACCESS_FINE_LOCATION);
+                if(permisionToAccessLocationAccepted){
                     mMap.setMyLocationEnabled(true);
                 }
 
                 LatLng singapore = new LatLng(1.301, 103.837);
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(singapore).zoom(12).build();
                 //gMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                gMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 
         });

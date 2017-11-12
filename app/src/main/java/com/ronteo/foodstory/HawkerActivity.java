@@ -26,6 +26,7 @@ import com.ronteo.foodstory.fragment.GMapFragment;
 import com.ronteo.foodstory.fragment.HawkerAboutFragment;
 import com.ronteo.foodstory.fragment.HawkerFragment;
 import com.ronteo.foodstory.fragment.ProfileFragment;
+import com.ronteo.foodstory.fragment.SignatureFragment;
 import com.ronteo.foodstory.model.Hawker;
 import com.ronteo.foodstory.util.DownloadImage;
 import com.ronteo.foodstory.util.RestClient;
@@ -116,6 +117,8 @@ public class HawkerActivity extends AppCompatActivity {
                                 break;
 
                             case R.id.hawker_signature:
+                                Fragment signatureFragment = new SignatureFragment();
+                                changeFragment(signatureFragment);
                                 break;
 
                             case R.id.hawker_dishes:

@@ -38,7 +38,7 @@ public class HawkerAboutFragment extends Fragment {
         String about = "Phone: " + hawker.getPhone() + " | Email: " + hawker.getEmail() + " | Address " + hawker.getWebsite();
 
         hawkerAbout.setText(about);
-        hawkerStory.setText(hawker.getDescription());
+        hawkerStory.setText(hawker.getStory());
 
         return view;
     }

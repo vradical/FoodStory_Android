@@ -148,7 +148,6 @@ public class LoginActivity extends Activity {
                     e.printStackTrace();
                 }*/
 
-                mDialog.dismiss();
                 finish();
             }
 
@@ -159,11 +158,11 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onFinish() {
+                mDialog.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
-                mDialog.dismiss();
                 Log.e("error", t.toString());
                 displayDialog(R.string.dialog_error_server);
                 LoginManager.getInstance().logOut();

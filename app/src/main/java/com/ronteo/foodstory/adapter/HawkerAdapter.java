@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         TextView hawkerNameView;
         TextView hawkerDescView;
         ImageView hawkerImageView;
+        ImageView hawkerStore;
+        ImageView hawkerDelivery;
         LinearLayout hawkerWrapper;
 
         public MyViewHolder(View itemView) {
@@ -37,6 +40,8 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
             this.hawkerDescView = itemView.findViewById(R.id.hawker_card_desc);
             this.hawkerImageView = itemView.findViewById(R.id.hawker_card_cover);
             this.hawkerWrapper = itemView.findViewById(R.id.hawker_card_wrapper);
+            this.hawkerStore = itemView.findViewById(R.id.hawker_card_isstore);
+            this.hawkerDelivery = itemView.findViewById(R.id.hawker_card_isdelivery);
         }
     }
 
@@ -60,10 +65,24 @@ public class HawkerAdapter extends RecyclerView.Adapter<HawkerAdapter.MyViewHold
         TextView textViewName = holder.hawkerNameView;
         TextView textViewVersion = holder.hawkerDescView;
         ImageView imageView = holder.hawkerImageView;
+        ImageView storeView = holder.hawkerStore;
+        ImageView deliveryView = holder.hawkerDelivery;
 
         textViewName.setText(dataSet.get(listPosition).getName());
         textViewVersion.setText(dataSet.get(listPosition).getDescription());
         new DownloadImage(imageView).execute(dataSet.get(listPosition).getCoverPhoto());
+
+        if(dataSet.get(listPosition).isDelivery() && dataSet.get(listPosition).isStore()){
+            storeView.setVisibility(View.VISIBLE);
+            deliveryView.setVisibility(View.VISIBLE);
+        }else if (dataSet.get(listPosition).isStore()){
+            storeView.setVisibility(View.VISIBLE);
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)storeView.getLayoutParams();
+            params.setMargins(10, 10, 10, 10);
+            storeView.setLayoutParams(params);
+        }else if (dataSet.get(listPosition).isDelivery()){
+            deliveryView.setVisibility(View.VISIBLE);
+        }
 
         holder.hawkerWrapper.setOnClickListener(new View.OnClickListener() {
             @Override

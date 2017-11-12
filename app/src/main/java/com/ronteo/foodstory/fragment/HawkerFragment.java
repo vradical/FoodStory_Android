@@ -1,8 +1,6 @@
 package com.ronteo.foodstory.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,7 +52,7 @@ public class HawkerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_hawker, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.hawker_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
