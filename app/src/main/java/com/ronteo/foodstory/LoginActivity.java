@@ -136,17 +136,20 @@ public class LoginActivity extends Activity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
-                /*
                 try {
 
-                    if (response.getBoolean("newUser")) {
+                    if (response.get("newUser").equals("true")) {
                         //prompt for new user procedure
                     }
 
+                    editor.putString("userID", response.getString("userID"));
+                    editor.apply();
+                    editor.commit();
+
                 } catch (JSONException e) {
-                    displayDialog("Error retrieving information from server");
+                    displayDialog(R.string.dialog_error_server);
                     e.printStackTrace();
-                }*/
+                }
 
                 finish();
             }

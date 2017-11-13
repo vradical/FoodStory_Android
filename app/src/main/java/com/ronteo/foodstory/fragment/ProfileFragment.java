@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.facebook.login.LoginManager;
+import com.ronteo.foodstory.HawkerActivity;
+import com.ronteo.foodstory.HawkerFormActivity;
 import com.ronteo.foodstory.LoginActivity;
 import com.ronteo.foodstory.MainActivity;
 import com.ronteo.foodstory.R;
@@ -22,6 +24,7 @@ import com.ronteo.foodstory.R;
 public class ProfileFragment extends Fragment {
 
     protected Button mLogout;
+    protected Button mNewHawker;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -37,6 +40,16 @@ public class ProfileFragment extends Fragment {
 
         //Temp Placeholder for logout
         mLogout = view.findViewById(R.id.setting_logout);
+        /*
+        mNewHawker = view.findViewById(R.id.setting_addHawker);
+
+        mNewHawker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity().getApplicationContext(), HawkerFormActivity.class);
+                getActivity().getApplicationContext().startActivity(i);
+            }
+        });*/
 
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,17 +1,45 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ronteo.foodstory.fragment.ProfileFragment">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This page is for debugging and demonstration purposes only"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:gravity="center">
+
+        <!--
+        <Button
+            android:id="@+id/setting_addHawker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Hawker"
+            android:layout_gravity="center"/>
+            -->
+
+        <Button
+            android:id="@+id/setting_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/setting_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="77dp"
-        android:layout_gravity="center"/>
-
-</FrameLayout>
+</LinearLayout>

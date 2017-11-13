@@ -46,10 +46,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.ronteo.foodstory.HawkerActivity"
-            android:parentActivityName="com.ronteo.foodstory.MainActivity" >
+            android:name=".HawkerActivity"
+            android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -72,6 +72,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".HawkerFormActivity"
+            android:label="@string/title_activity_hawker_form"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ronteo.foodstory.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
